@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arijeet Karmakar | ServiceNow & AI Developer Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            black: '#0a0a0a',
+                            darkGray: '#121212',
+                            mediumGray: '#1e1e1e',
+                            lightGray: '#f5f5f5',
+                            red: '#e50914',
+                            redHover: '#b20710',
+                            accentGlow: 'rgba(229, 9, 20, 0.15)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'Fira Code', 'monospace']
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s infinite alternate',
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px rgba(229, 9, 20, 0.2)' },
+                            '100%': { boxShadow: '0 0 20px rgba(229, 9, 20, 0.6)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Tweaks for custom scrollbars and glows -->
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e50914;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b20710;
+        }
+        .text-glow {
+            text-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+        }
+        .border-glow {
+            box-shadow: 0 0 15px rgba(229, 9, 20, 0.1);
+            transition: all 0.3s ease;
+        }
+        .border-glow:hover {
+            box-shadow: 0 0 20px rgba(229, 9, 20, 0.4);
+            border-color: #e50914 !important;
+        }
+        .terminal-bg {
+            background-image: radial-gradient(rgba(18, 18, 18, 0.9) 60%, rgba(10, 10, 10, 1) 100%);
+        }
+    </style>
+</head>
+<body class="bg-brand-black text-gray-100 font-sans overflow-x-hidden antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-brand-black/90 backdrop-blur-md border-b border-white/10 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <a href="#" class="flex items-center space-x-2 group">
+                <span class="bg-brand-red text-white font-mono font-bold px-2.5 py-1 rounded text-lg tracking-wider transition-all duration-300 group-hover:bg-white group-hover:text-brand-red">AK</span>
+                <span class="text-white font-semibold text-lg tracking-wider hidden sm:inline-block group-hover:text-brand-red transition-colors">ARIJEET <span class="text-brand-red font-bold">KARMAKAR</span></span>
+            </a>
+            
+            <!-- Desktop Nav Items -->
+            <div class="hidden md:flex items-center space-x-8 font-medium text-sm">
+                <a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a>
+                <a href="#experience" class="text-gray-400 hover:text-white transition-colors">Experience</a>
+                <a href="#servicenow" class="text-gray-400 hover:text-brand-red transition-colors">ServiceNow Hub</a>
+                <a href="#skills" class="text-gray-400 hover:text-white transition-colors">Skills</a>
+                <a href="#education" class="text-gray-400 hover:text-white transition-colors">Education</a>
+                <a href="#contact" class="px-4 py-2 bg-brand-red text-white font-semibold rounded hover:bg-brand-redHover transition-all text-glow">Hire Me</a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="mobileMenuBtn" class="md:hidden text-white hover:text-brand-red focus:outline-none" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden absolute top-full left-0 w-full bg-brand-darkGray/95 backdrop-blur-lg border-b border-white/10 flex flex-col p-6 space-y-4">
+            <a href="#about" class="text-gray-300 hover:text-brand-red py-2 border-b border-white/5">About</a>
+            <a href="#experience" class="text-gray-300 hover:text-brand-red py-2 border-b border-white/5">Experience</a>
+            <a href="#servicenow" class="text-gray-300 hover:text-brand-red py-2 border-b border-white/5">ServiceNow Hub</a>
+            <a href="#skills" class="text-gray-300 hover:text-brand-red py-2 border-b border-white/5">Skills</a>
+            <a href="#education" class="text-gray-300 hover:text-brand-red py-2 border-b border-white/5">Education</a>
+            <a href="#contact" class="w-full text-center bg-brand-red text-white py-2.5 rounded font-semibold hover:bg-brand-redHover">Hire Me</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden border-b border-white/5">
+        <!-- Interactive Canvas Background -->
+        <canvas id="heroParticles" class="absolute inset-0 pointer-events-none opacity-40 z-0"></canvas>
+        
+        <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
+            
+            <!-- Hero Left: Profile Info -->
+            <div class="lg:col-span-7 flex flex-col justify-center space-y-6 text-left">
+                <div class="inline-flex items-center space-x-2 bg-brand-red/10 border border-brand-red/30 px-3 py-1.5 rounded-full text-xs text-brand-red font-mono w-fit">
+                    <span class="w-2 h-2 rounded-full bg-brand-red animate-ping"></span>
+                    <span>Currently: Supervising Associate @ EY</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight leading-none text-white">
+                    Hi, I'm <span class="text-glow text-brand-red">Arijeet</span> <br>
+                    <span id="typewriter" class="text-2xl sm:text-4xl text-gray-300 font-mono font-medium block mt-3"></span>
+                </h1>
+
+                <p class="text-gray-400 text-lg max-w-xl leading-relaxed">
+                    Results-driven **Software Engineer with 5+ years of experience**, specializing in building next-gen **ServiceNow solutions, Now Assist integration, and Agentic AI workflow models** on high-scale, domain-separated instances.
+                </p>
+
+                <!-- Key Value Metrics Block -->
+                <div class="grid grid-cols-3 gap-4 py-4 max-w-md">
+                    <div class="border-l-2 border-brand-red pl-4">
+                        <span class="block text-2xl font-bold text-white font-mono">5+ Yrs</span>
+                        <span class="text-xs text-gray-500 uppercase tracking-widest">Experience</span>
+                    </div>
+                    <div class="border-l-2 border-brand-red pl-4">
+                        <span class="block text-2xl font-bold text-white font-mono">4 Yrs</span>
+                        <span class="text-xs text-gray-500 uppercase tracking-widest">At EY (Ongoing)</span>
+                    </div>
+                    <div class="border-l-2 border-brand-red pl-4">
+                        <span class="block text-2xl font-bold text-white font-mono">CSA</span>
+                        <span class="text-xs text-gray-500 uppercase tracking-widest">ServiceNow Cert</span>
+                    </div>
+                </div>
+
+                <!-- Call to Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 pt-2">
+                    <a href="#virtual-agent" class="flex items-center justify-center space-x-2 bg-brand-red hover:bg-brand-redHover text-white px-8 py-3.5 rounded-lg font-semibold transition-all shadow-lg shadow-brand-red/20 border border-transparent hover:border-white/20">
+                        <i class="fa-solid fa-robot"></i>
+                        <span>Test My Virtual Agent</span>
+                    </a>
+                    <a href="#experience" class="flex items-center justify-center space-x-2 bg-brand-mediumGray hover:bg-brand-darkGray text-gray-300 hover:text-white px-8 py-3.5 rounded-lg font-semibold transition-all border border-white/10 hover:border-brand-red">
+                        <span>View Work History</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Right: Interactive Dashboard Widget representing ServiceNow -->
+            <div class="lg:col-span-5 w-full flex justify-center">
+                <div class="w-full max-w-md bg-brand-darkGray border border-white/10 rounded-xl p-5 shadow-2xl relative overflow-hidden">
+                    <div class="absolute -top-10 -right-10 w-40 h-40 bg-brand-red/10 rounded-full blur-2xl"></div>
+                    
+                    <!-- Dashboard Header -->
+                    <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-3 h-3 rounded-full bg-red-600"></span>
+                            <span class="w-3 h-3 rounded-full bg-yellow-500"></span>
+                            <span class="w-3 h-3 rounded-full bg-green-500"></span>
+                        </div>
+                        <span class="text-xs font-mono text-gray-500">servicenow_csm_metric.xml</span>
+                    </div>
+
+                    <!-- ServiceNow Mock Telemetry Data -->
+                    <div class="space-y-4 text-sm">
+                        <div class="p-3.5 bg-brand-black/50 border border-white/5 rounded-lg">
+                            <div class="flex justify-between text-xs text-gray-500 font-mono mb-1">
+                                <span>SYSTEM HEALTH</span>
+                                <span class="text-green-500 font-bold">100% ONLINE</span>
+                            </div>
+                            <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden">
+                                <div class="bg-gradient-to-r from-red-600 to-red-500 h-full w-full rounded-full animate-pulse"></div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3 bg-brand-black/50 border border-white/5 rounded-lg">
+                                <span class="text-xs text-gray-500 font-mono block">NOW ASSIST</span>
+                                <span class="text-lg font-bold text-white flex items-center gap-1.5 mt-0.5">
+                                    <i class="fa-solid fa-circle-nodes text-brand-red"></i> Enabled
+                                </span>
+                            </div>
+                            <div class="p-3 bg-brand-black/50 border border-white/5 rounded-lg">
+                                <span class="text-xs text-gray-500 font-mono block">E-BONDING</span>
+                                <span class="text-lg font-bold text-white flex items-center gap-1.5 mt-0.5">
+                                    <i class="fa-solid fa-arrows-spin text-brand-red animate-spin"></i> Syncing
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Mini Code Console -->
+                        <div class="p-3 bg-brand-black text-xs font-mono text-gray-400 rounded-lg border border-white/5">
+                            <p class="text-brand-red font-semibold mb-1">&gt; initializing.js</p>
+                            <p class="text-gray-500">// Domain-Separated Parent Hierarchy</p>
+                            <p class="text-green-400">System.info("Arijeet's Profile Connected");</p>
+                            <p class="text-gray-300">Experience: 5+ Years Active</p>
+                            <p class="text-gray-300">Modules: CSM, ITSM, AWA, VA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Recruiter Quick-Pass Sticky Bar / Actions -->
+    <section class="bg-brand-darkGray/80 border-b border-white/10 py-5 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-3">
+                <i class="fa-solid fa-bolt text-brand-red text-xl"></i>
+                <p class="text-sm text-gray-300"><span class="font-semibold text-white">Recruiter Quick-Pass:</span> Get instant connectivity options for onboarding Arijeet.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+                <button onclick="copyToClipboard('arijitk65@gmail.com', 'emailButton')" id="emailButton" class="flex items-center space-x-2 bg-brand-black hover:bg-black text-gray-300 hover:text-white px-4 py-2 rounded-md text-xs font-mono border border-white/10 transition-all">
+                    <i class="fa-solid fa-copy"></i>
+                    <span>arijitk65@gmail.com</span>
+                </button>
+                <button onclick="copyToClipboard('+918017920596', 'phoneButton')" id="phoneButton" class="flex items-center space-x-2 bg-brand-black hover:bg-black text-gray-300 hover:text-white px-4 py-2 rounded-md text-xs font-mono border border-white/10 transition-all">
+                    <i class="fa-solid fa-copy"></i>
+                    <span>+91-8017920596</span>
+                </button>
+                <button onclick="window.print()" class="flex items-center space-x-2 bg-brand-red text-white hover:bg-brand-redHover px-4 py-2 rounded-md text-xs font-semibold transition-all">
+                    <i class="fa-solid fa-print"></i>
+                    <span>Export CV</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Elegantly designed toast container for clipboard events -->
+    <div id="toast" class="fixed bottom-6 left-6 z-50 bg-brand-darkGray border-l-4 border-brand-red text-white px-5 py-3 rounded-lg shadow-2xl transform translate-y-24 opacity-0 transition-all duration-300 flex items-center space-x-3">
+        <i class="fa-solid fa-circle-check text-brand-red text-lg"></i>
+        <span id="toastMsg" class="text-sm font-medium">Text copied to clipboard!</span>
+    </div>
+
+    <!-- About Section & ServiceNow Showcase -->
+    <section id="about" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            
+            <!-- Left Grid: Big Vision Message -->
+            <div class="lg:col-span-5 space-y-6">
+                <span class="text-brand-red font-mono text-sm tracking-widest uppercase font-bold">About Me</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+                    Specializing in high-performance digital automation.
+                </h2>
+                <div class="w-16 h-1 bg-brand-red"></div>
+                
+                <p class="text-gray-300 leading-relaxed">
+                    A seasoned ServiceNow developer, with active contributions in optimizing workflow operations within top-tier corporations. Currently accelerating enterprise scale within **EY (Ernst & Young)**, leveraging strong platform customizability for complex parent-child structures (Domain Separation).
+                </p>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    My expertise spans from full-fledged Customer Service Management (CSM) deployments, integration patterns like REST APIs & Ebonding, to AI capabilities like ServiceNow Now Assist and Virtual Agent customizations.
+                </p>
+
+                <!-- Personal Info Mini Card -->
+                <div class="bg-brand-darkGray/60 border border-white/5 rounded-xl p-5 space-y-3 font-mono text-xs text-gray-400">
+                    <div class="flex justify-between py-1 border-b border-white/5">
+                        <span class="text-white">FULL NAME:</span>
+                        <span>Arijeet Karmakar</span>
+                    </div>
+                    <div class="flex justify-between py-1 border-b border-white/5">
+                        <span class="text-white">DOB:</span>
+                        <span>September 08, 1995</span>
+                    </div>
+                    <div class="flex justify-between py-1 border-b border-white/5">
+                        <span class="text-white">LOCATIONS:</span>
+                        <span>Bangalore & Kolkata</span>
+                    </div>
+                    <div class="flex justify-between py-1">
+                        <span class="text-white">LANGUAGES:</span>
+                        <span>English, Bengali, Hindi</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Grid: Core ServiceNow Focus Areas -->
+            <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                
+                <!-- Focus Card 1 -->
+                <div class="bg-brand-darkGray border border-white/10 rounded-xl p-6 border-glow">
+                    <div class="w-12 h-12 rounded-lg bg-brand-red/10 border border-brand-red/30 flex items-center justify-center text-brand-red text-xl mb-4">
+                        <i class="fa-solid fa-bezier-curve"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">CSM & ITSM Expertise</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        End-to-end setups of Case, Problem, Incident, Change, RITM, SCTASK, Catalog Designs and Process Automations tailored for complex workflows.
+                    </p>
+                </div>
+
+                <!-- Focus Card 2 -->
+                <div class="bg-brand-darkGray border border-white/10 rounded-xl p-6 border-glow">
+                    <div class="w-12 h-12 rounded-lg bg-brand-red/10 border border-brand-red/30 flex items-center justify-center text-brand-red text-xl mb-4">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Now Assist & Agentic AI</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Activating generative AI skills such as Chat & Case Summarization, Resolution Notes Generation, Email Recommendations, and Risk Explanations.
+                    </p>
+                </div>
+
+                <!-- Focus Card 3 -->
+                <div class="bg-brand-darkGray border border-white/10 rounded-xl p-6 border-glow">
+                    <div class="w-12 h-12 rounded-lg bg-brand-red/10 border border-brand-red/30 flex items-center justify-center text-brand-red text-xl mb-4">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Integrations & REST APIs</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Robust external integrations using SharePoint (External Content Connectors), Ebonding across multiple instances, Postman, and REST Web Services.
+                    </p>
+                </div>
+
+                <!-- Focus Card 4 -->
+                <div class="bg-brand-darkGray border border-white/10 rounded-xl p-6 border-glow">
+                    <div class="w-12 h-12 rounded-lg bg-brand-red/10 border border-brand-red/30 flex items-center justify-center text-brand-red text-xl mb-4">
+                        <i class="fa-solid fa-sitemap"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-2">Domain Separation Architect</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Deep understanding of domain routing, data/process segregation, parent-child hierarchies, and scoped global configurations.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Timeline Section -->
+    <section id="experience" class="bg-brand-darkGray py-24 px-6 border-t border-b border-white/5">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center space-y-4 mb-16">
+                <span class="text-brand-red font-mono text-sm tracking-widest uppercase font-bold">The Journey</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">Work History</h2>
+                <p class="text-gray-400 text-sm max-w-md mx-auto">Proven track record of optimizing platform-level infrastructure across prominent enterprise spheres.</p>
+            </div>
+
+            <!-- Experience Timeline -->
+            <div class="relative border-l border-white/10 ml-4 md:ml-32">
+                
+                <!-- EY Timeline Element -->
+                <div class="mb-12 relative pl-8 group">
+                    <!-- Absolute Date (Hidden on mobile, layout on desktop side) -->
+                    <div class="hidden md:block absolute -left-36 top-1.5 w-28 text-right font-mono text-sm text-brand-red font-bold">
+                        Apr 2022 - Present
+                    </div>
+                    
+                    <!-- Timeline Dot -->
+                    <span class="absolute -left-2.5 top-1.5 w-5 h-5 rounded-full bg-brand-black border-2 border-brand-red flex items-center justify-center group-hover:bg-brand-red transition-all">
+                        <span class="w-1.5 h-1.5 rounded-full bg-brand-red group-hover:bg-brand-black transition-all"></span>
+                    </span>
+
+                    <div class="space-y-2">
+                        <span class="md:hidden block font-mono text-xs text-brand-red font-bold">Apr 2022 - Ongoing</span>
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                            <h3 class="text-xl font-bold text-white group-hover:text-brand-red transition-colors">Supervising Associate</h3>
+                            <span class="text-xs bg-white/10 px-2.5 py-1 rounded text-gray-300 font-mono w-fit mt-1 sm:mt-0">EY (Ernst & Young)</span>
+                        </div>
+                        <p class="text-gray-400 text-sm">Managing complex ServiceNow operations on domain-separated environments. Leading critical Agentic AI and Now Assist integrations.</p>
+                        
+                        <!-- Bullet Achievements -->
+                        <ul class="list-none space-y-2 text-sm text-gray-300 pt-2">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-caret-right text-brand-red mt-1 mr-2 flex-shrink-0"></i>
+                                <span><strong>Now Assist Integrations:</strong> Configured Chat & Case Summarization, Resolution Notes, and Change Risk Explanation capabilities in Virtual Agent / Workspace.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-caret-right text-brand-red mt-1 mr-2 flex-shrink-0"></i>
+                                <span><strong>Sharepoint Connector:</strong> Enabled External Content Connector indexing for unified Portal AI Search and Virtual Agent search.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-caret-right text-brand-red mt-1 mr-2 flex-shrink-0"></i>
+                                <span><strong>Enterprise Service Modules:</strong> Managed complex catalog configurations and automations for major service entities (Case, Problem, Change, Incident).</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Appsbee Timeline Element -->
+                <div class="mb-12 relative pl-8 group">
+                    <div class="hidden md:block absolute -left-36 top-1.5 w-28 text-right font-mono text-sm text-gray-500 font-semibold">
+                        Dec 2019 - Feb 2022
+                    </div>
+                    
+                    <span class="absolute -left-2.5 top-1.5 w-5 h-5 rounded-full bg-brand-black border-2 border-white/20 flex items-center justify-center group-hover:border-brand-red transition-all">
+                        <span class="w-1.5 h-1.5 rounded-full bg-transparent group-hover:bg-brand-red transition-all"></span>
+                    </span>
+
+                    <div class="space-y-2">
+                        <span class="md:hidden block font-mono text-xs text-gray-500 font-bold">Dec 2019 - Feb 2022</span>
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                            <h3 class="text-xl font-bold text-white group-hover:text-brand-red transition-colors">Quality Assurance Tester</h3>
+                            <span class="text-xs bg-white/5 px-2.5 py-1 rounded text-gray-400 font-mono w-fit mt-1 sm:mt-0">Appsbee Technology</span>
+                        </div>
+                        <p class="text-gray-400 text-sm">Ensured software quality constraints, working on multi-tenant applications and executing functional scripts.</p>
+                        
+                        <ul class="list-none space-y-2 text-sm text-gray-300 pt-2">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-caret-right text-brand-red mt-1 mr-2 flex-shrink-0"></i>
+                                <span>Structured and processed comprehensive testing campaigns with strict Jira management workflows.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-caret-right text-brand-red mt-1 mr-2 flex-shrink-0"></i>
+                                <span>Executed deep regression cycles ensuring zero regression spillages onto production builds.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- GI Labs Timeline Element -->
+                <div class="relative pl-8 group">
+                    <div class="hidden md:block absolute -left-36 top-1.5 w-28 text-right font-mono text-sm text-gray-500 font-semibold">
+                        Oct 2018 - Jun 2019
+                    </div>
+                    
+                    <span class="absolute -left-2.5 top-1.5 w-5 h-5 rounded-full bg-brand-black border-2 border-white/20 flex items-center justify-center group-hover:border-brand-red transition-all">
+                        <span class="w-1.5 h-1.5 rounded-full bg-transparent group-hover:bg-brand-red transition-all"></span>
+                    </span>
+
+                    <div class="space-y-2">
+                        <span class="md:hidden block font-mono text-xs text-gray-500 font-bold">Oct 2018 - Jun 2019</span>
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                            <h3 class="text-xl font-bold text-white group-hover:text-brand-red transition-colors">AI Chatbot & Voicebot Developer (Intern)</h3>
+                            <span class="text-xs bg-white/5 px-2.5 py-1 rounded text-gray-400 font-mono w-fit mt-1 sm:mt-0">G.I. Labs</span>
+                        </div>
+                        <p class="text-gray-400 text-sm">Pioneered interactive natural language processing applications using early-stage conversational tools.</p>
+                        
+                        <ul class="list-none space-y-2 text-sm text-gray-300 pt-2">
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-caret-right text-brand-red mt-1 mr-2 flex-shrink-0"></i>
+                                <span><strong>Google Dialogflow & Speech Frameworks:</strong> Configured conversational scripts paired with the WebSpeech Web API.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa-solid fa-caret-right text-brand-red mt-1 mr-2 flex-shrink-0"></i>
+                                <span>Explored customized text-to-speech mapping structures with custom Javascript integrations.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive ServiceNow Hub / Visual Simulation of Solutions -->
+    <section id="servicenow" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center space-y-4 mb-16">
+            <span class="text-brand-red font-mono text-sm tracking-widest uppercase font-bold">Interactive Showcase</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">ServiceNow Architectural Concepts</h2>
+            <p class="text-gray-400 text-sm max-w-md mx-auto">Click through the dynamic tabs to visualize how I model advanced automated structures inside ServiceNow.</p>
+        </div>
+
+        <!-- Custom Interactive Tabs -->
+        <div class="bg-brand-darkGray border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+            <!-- Tabs Bar -->
+            <div class="flex flex-wrap border-b border-white/10 bg-brand-black/40">
+                <button onclick="switchSNDemo('ebonding')" id="tab-ebonding" class="sn-tab-btn flex-1 min-w-[150px] px-6 py-4 font-mono text-sm font-semibold text-brand-red border-b-2 border-brand-red bg-brand-black/60 transition-all focus:outline-none">
+                    <i class="fa-solid fa-arrows-spin mr-2"></i>Ebonding Architecture
+                </button>
+                <button onclick="switchSNDemo('domain')" id="tab-domain" class="sn-tab-btn flex-1 min-w-[150px] px-6 py-4 font-mono text-sm font-semibold text-gray-400 border-b-2 border-transparent hover:text-white transition-all focus:outline-none">
+                    <i class="fa-solid fa-sitemap mr-2"></i>Domain Separation
+                </button>
+                <button onclick="switchSNDemo('nowassist')" id="tab-nowassist" class="sn-tab-btn flex-1 min-w-[150px] px-6 py-4 font-mono text-sm font-semibold text-gray-400 border-b-2 border-transparent hover:text-white transition-all focus:outline-none">
+                    <i class="fa-solid fa-wand-magic-sparkles mr-2"></i>Now Assist Skills
+                </button>
+            </div>
+
+            <!-- Content Panel -->
+            <div class="p-6 sm:p-10 min-h-[380px]">
+                
+                <!-- Ebonding Content -->
+                <div id="panel-ebonding" class="sn-panel space-y-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div class="space-y-4">
+                            <div class="bg-brand-red/10 border border-brand-red/20 px-3 py-1.5 rounded-full text-xs text-brand-red font-mono w-fit">INTEGRATION ENGINE</div>
+                            <h3 class="text-2xl font-bold text-white">Cross-Instance Sync (Ebonding)</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Seamless synchronization between parent ServiceNow networks or client ServiceNow nodes utilizing customized **REST APIs** & **Postman validation schemas**.
+                            </p>
+                            <p class="text-gray-400 text-xs">
+                                Configured triggers, inbound action interceptors, payload mappers, and connection parameters to achieve reliable bidirectional data flows.
+                            </p>
+                            <div class="flex gap-4">
+                                <span class="bg-brand-black px-3 py-1.5 rounded border border-white/5 font-mono text-xs text-gray-400">REST API</span>
+                                <span class="bg-brand-black px-3 py-1.5 rounded border border-white/5 font-mono text-xs text-gray-400">OAuth 2.0</span>
+                                <span class="bg-brand-black px-3 py-1.5 rounded border border-white/5 font-mono text-xs text-gray-400">JSON Payload</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Ebonding Simulation Visual -->
+                        <div class="bg-brand-black rounded-xl p-5 border border-white/5 flex flex-col justify-between h-64 font-mono text-xs">
+                            <div class="flex justify-between items-center text-gray-500 mb-2">
+                                <span>Client Instance</span>
+                                <span class="text-brand-red"><i class="fa-solid fa-bolt animate-pulse"></i> REST Sync</span>
+                                <span>Provider Instance</span>
+                            </div>
+                            <div class="flex justify-between items-center my-auto">
+                                <div class="bg-brand-darkGray border border-brand-red/40 px-4 py-3 rounded text-center w-5/12">
+                                    <div class="text-white font-bold">INCIDENT</div>
+                                    <div class="text-gray-500 text-[10px] mt-1">INC0093849</div>
+                                </div>
+                                <div class="flex-1 flex flex-col items-center">
+                                    <i class="fa-solid fa-arrow-right-long text-brand-red animate-pulse text-lg"></i>
+                                    <span class="text-[9px] text-gray-600 mt-1">TRANSFORM</span>
+                                    <i class="fa-solid fa-arrow-left-long text-gray-500 text-lg"></i>
+                                </div>
+                                <div class="bg-brand-darkGray border border-white/20 px-4 py-3 rounded text-center w-5/12">
+                                    <div class="text-white font-bold">CASE REQ</div>
+                                    <div class="text-gray-500 text-[10px] mt-1">CSM0039281</div>
+                                </div>
+                            </div>
+                            <div class="bg-brand-darkGray p-2.5 rounded text-gray-400 text-[10px] border border-white/5">
+                                <span class="text-green-500">POST</span> /api/now/table/incident_sync <span class="text-white">Status: 201 Created</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Domain Separation Content -->
+                <div id="panel-domain" class="sn-panel hidden space-y-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div class="space-y-4">
+                            <div class="bg-brand-red/10 border border-brand-red/20 px-3 py-1.5 rounded-full text-xs text-brand-red font-mono w-fit">ARCHITECTURE</div>
+                            <h3 class="text-2xl font-bold text-white">Domain-Separated Parent Hierarchy</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Experience developing in environment structures built to manage separate multi-tenant nodes safely within single-instance licenses.
+                            </p>
+                            <p class="text-gray-400 text-xs">
+                                Strong capabilities in configuring domain paths, global scripting controls, table exclusions, and visibility overrides down to granular levels.
+                            </p>
+                            <div class="flex gap-4">
+                                <span class="bg-brand-black px-3 py-1.5 rounded border border-white/5 font-mono text-xs text-gray-400">sys_domain</span>
+                                <span class="bg-brand-black px-3 py-1.5 rounded border border-white/5 font-mono text-xs text-gray-400">Parent-Child Path</span>
+                                <span class="bg-brand-black px-3 py-1.5 rounded border border-white/5 font-mono text-xs text-gray-400">Scope Isolations</span>
+                            </div>
+                        </div>
+
+                        <!-- Domain Visual Tree -->
+                        <div class="bg-brand-black rounded-xl p-5 border border-white/5 flex flex-col justify-center h-64 font-mono text-xs space-y-3">
+                            <div class="bg-brand-red/20 border border-brand-red text-center py-2 rounded text-white font-bold max-w-xs mx-auto w-full">
+                                TOP / GLOBAL (EY Engine)
+                            </div>
+                            <div class="flex justify-center text-gray-500"><i class="fa-solid fa-arrow-down-long"></i></div>
+                            <div class="flex justify-between gap-4">
+                                <div class="bg-brand-darkGray border border-white/10 text-center py-2 rounded text-gray-300 font-bold flex-1">
+                                    Domain A (Tenant X)
+                                    <div class="text-[9px] text-gray-500 mt-1">Inherited Process</div>
+                                </div>
+                                <div class="bg-brand-darkGray border border-brand-red/30 text-center py-2 rounded text-gray-300 font-bold flex-1">
+                                    Domain B (Tenant Y)
+                                    <div class="text-[9px] text-brand-red mt-1">Override Config</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Now Assist Content -->
+                <div id="panel-nowassist" class="sn-panel hidden space-y-6">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div class="space-y-4">
+                            <div class="bg-brand-red/10 border border-brand-red/20 px-3 py-1.5 rounded-full text-xs text-brand-red font-mono w-fit">GEN-AI ABILITIES</div>
+                            <h3 class="text-2xl font-bold text-white">Now Assist Generative Integration</h3>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                Integrating ServiceNow Gen-AI intelligence workflows within Virtual Agent nodes and custom agent workspaces for massive optimization returns.
+                            </p>
+                            <p class="text-gray-400 text-xs">
+                                Implemented chat/case summaries, dynamic risk assessments, sidebar chat sharing, and personalized dynamic template builders.
+                            </p>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="bg-brand-black px-2.5 py-1 rounded border border-white/5 font-mono text-xs text-gray-400">Summarization</span>
+                                <span class="bg-brand-black px-2.5 py-1 rounded border border-white/5 font-mono text-xs text-gray-400">Resolution Gen</span>
+                                <span class="bg-brand-black px-2.5 py-1 rounded border border-white/5 font-mono text-xs text-gray-400">KB Integration</span>
+                            </div>
+                        </div>
+
+                        <!-- Gen AI Telemetry Grid -->
+                        <div class="bg-brand-black rounded-xl p-5 border border-white/5 grid grid-cols-2 gap-3 h-64 overflow-y-auto">
+                            <div class="p-3.5 bg-brand-darkGray rounded border border-white/5 flex flex-col justify-between">
+                                <i class="fa-solid fa-list-check text-brand-red mb-2 text-base"></i>
+                                <span class="text-white font-bold text-xs">Case Summaries</span>
+                                <span class="text-[10px] text-gray-500 mt-1">Compressing complex case logs.</span>
+                            </div>
+                            <div class="p-3.5 bg-brand-darkGray rounded border border-brand-red/30 flex flex-col justify-between">
+                                <i class="fa-solid fa-wand-magic-sparkles text-brand-red mb-2 text-base"></i>
+                                <span class="text-white font-bold text-xs">Resolution Gen</span>
+                                <span class="text-[10px] text-gray-400 mt-1">GenAI closure logs.</span>
+                            </div>
+                            <div class="p-3.5 bg-brand-darkGray rounded border border-white/5 flex flex-col justify-between">
+                                <i class="fa-solid fa-shield-halved text-brand-red mb-2 text-base"></i>
+                                <span class="text-white font-bold text-xs">Risk Assessment</span>
+                                <span class="text-[10px] text-gray-500 mt-1">Change request risk profiling.</span>
+                            </div>
+                            <div class="p-3.5 bg-brand-darkGray rounded border border-white/5 flex flex-col justify-between">
+                                <i class="fa-solid fa-magnifying-glass text-brand-red mb-2 text-base"></i>
+                                <span class="text-white font-bold text-xs">AI Portal Search</span>
+                                <span class="text-[10px] text-gray-500 mt-1">Unified search across systems.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Certifications Grid -->
+    <section id="skills" class="py-24 px-6 bg-brand-darkGray/60 border-t border-b border-white/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16">
+            
+            <!-- Skills Left: Narrative & Certs -->
+            <div class="lg:col-span-4 space-y-8">
+                <div>
+                    <span class="text-brand-red font-mono text-sm tracking-widest uppercase font-bold">Knowledge Profile</span>
+                    <h2 class="text-3xl font-extrabold text-white mt-2">Certifications & Expertise</h2>
+                </div>
+                
+                <!-- Certified Badges -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-4 bg-brand-black border border-brand-red/30 p-4 rounded-xl relative overflow-hidden group hover:border-brand-red transition-all">
+                        <div class="absolute right-0 top-0 w-24 h-24 bg-brand-red/5 rounded-full blur-xl group-hover:bg-brand-red/10 transition-all"></div>
+                        <i class="fa-solid fa-certificate text-brand-red text-2xl"></i>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">ServiceNow Certified System Administrator</h4>
+                            <p class="text-gray-500 text-xs font-mono">CSA Verification Complete</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4 bg-brand-black border border-white/10 p-4 rounded-xl hover:border-brand-red transition-all relative overflow-hidden group">
+                        <div class="absolute right-0 top-0 w-24 h-24 bg-brand-red/5 rounded-full blur-xl group-hover:bg-brand-red/10 transition-all"></div>
+                        <i class="fa-solid fa-database text-brand-red text-2xl"></i>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">ServiceNow Implementation Specialist</h4>
+                            <p class="text-gray-400 text-xs font-mono">Data Foundations (CIS-DF)</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4 bg-brand-black border border-white/10 p-4 rounded-xl hover:border-brand-red transition-all relative overflow-hidden group">
+                        <div class="absolute right-0 top-0 w-24 h-24 bg-brand-red/5 rounded-full blur-xl group-hover:bg-brand-red/10 transition-all"></div>
+                        <i class="fa-solid fa-heart-pulse text-brand-red text-2xl"></i>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">Micro-Certification</h4>
+                            <p class="text-gray-400 text-xs font-mono">CMDB Health</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4 bg-brand-black border border-white/10 p-4 rounded-xl hover:border-white/20 transition-all">
+                        <i class="fa-solid fa-brain text-brand-red text-2xl"></i>
+                        <div>
+                            <h4 class="text-white font-bold text-sm">Machine Learning Foundation</h4>
+                            <p class="text-gray-500 text-xs font-mono">Model Structures & Dialogflow Agentic AI</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Creative Skills -->
+                <div class="space-y-3">
+                    <h4 class="text-white font-bold text-sm tracking-widest uppercase font-mono">Creative Portfolio</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-brand-black/80 px-3 py-1.5 rounded-md text-xs text-gray-300 border border-white/5"><i class="fa-solid fa-palette mr-1.5 text-brand-red"></i>Graphic Design</span>
+                        <span class="bg-brand-black/80 px-3 py-1.5 rounded-md text-xs text-gray-300 border border-white/5"><i class="fa-solid fa-camera mr-1.5 text-brand-red"></i>Photography</span>
+                        <span class="bg-brand-black/80 px-3 py-1.5 rounded-md text-xs text-gray-300 border border-white/5"><i class="fa-solid fa-film mr-1.5 text-brand-red"></i>DaVinci Resolve Editing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Right: Interactive Progress Matrix -->
+            <div class="lg:col-span-8 bg-brand-black border border-white/10 rounded-2xl p-6 sm:p-10 space-y-8">
+                <div>
+                    <h3 class="text-xl font-bold text-white">Technical Index</h3>
+                    <p class="text-gray-500 text-xs font-mono mt-1">Platform capabilities quantified by deep development application.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Progress Bar 1 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm font-mono">
+                            <span class="text-white font-semibold">ServiceNow Platform Customization</span>
+                            <span class="text-brand-red font-bold">95%</span>
+                        </div>
+                        <div class="w-full bg-brand-darkGray h-2 rounded-full overflow-hidden">
+                            <div class="bg-brand-red h-full w-[95%] rounded-full"></div>
+                        </div>
+                        <p class="text-[11px] text-gray-500">CSM, ITSM, Client Scripts, Business Rules, Flow Designer.</p>
+                    </div>
+
+                    <!-- Progress Bar 2 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm font-mono">
+                            <span class="text-white font-semibold">Now Assist & Conversational AI</span>
+                            <span class="text-brand-red font-bold">90%</span>
+                        </div>
+                        <div class="w-full bg-brand-darkGray h-2 rounded-full overflow-hidden">
+                            <div class="bg-brand-red h-full w-[90%] rounded-full"></div>
+                        </div>
+                        <p class="text-[11px] text-gray-500">Virtual Agent custom flows, Dialogflow integration.</p>
+                    </div>
+
+                    <!-- Progress Bar 3 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm font-mono">
+                            <span class="text-white font-semibold">API Integrations & Ebonding</span>
+                            <span class="text-brand-red font-bold">88%</span>
+                        </div>
+                        <div class="w-full bg-brand-darkGray h-2 rounded-full overflow-hidden">
+                            <div class="bg-brand-red h-full w-[88%] rounded-full"></div>
+                        </div>
+                        <p class="text-[11px] text-gray-500">REST, OAuth, SharePoint content indexing connector.</p>
+                    </div>
+
+                    <!-- Progress Bar 4 -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm font-mono">
+                            <span class="text-white font-semibold">Web Development Basics</span>
+                            <span class="text-brand-red font-bold">80%</span>
+                        </div>
+                        <div class="w-full bg-brand-darkGray h-2 rounded-full overflow-hidden">
+                            <div class="bg-brand-red h-full w-[80%] rounded-full"></div>
+                        </div>
+                        <p class="text-[11px] text-gray-500">HTML, CSS, Bootstrap, API interaction structures.</p>
+                    </div>
+                </div>
+
+                <!-- Micro-grid for other frameworks -->
+                <div class="border-t border-white/5 pt-6 space-y-3">
+                    <h5 class="text-xs font-mono uppercase text-gray-500">Other Systems & Frameworks</h5>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-brand-darkGray text-xs text-gray-400 px-3 py-1.5 rounded-md border border-white/5">Jira QA Testing</span>
+                        <span class="bg-brand-darkGray text-xs text-gray-400 px-3 py-1.5 rounded-md border border-white/5">WebSpeech API</span>
+                        <span class="bg-brand-darkGray text-xs text-gray-400 px-3 py-1.5 rounded-md border border-white/5">Postman testing tooling</span>
+                        <span class="bg-brand-darkGray text-xs text-gray-400 px-3 py-1.5 rounded-md border border-white/5">Parent-Child Scope Segregation</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center space-y-4 mb-16">
+            <span class="text-brand-red font-mono text-sm tracking-widest uppercase font-bold">Academics</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white">Academic Qualifications</h2>
+            <p class="text-gray-400 text-sm max-w-md mx-auto">Formative university learning foundations fueling critical systems implementation.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Degree 1 -->
+            <div class="bg-brand-darkGray border border-white/10 rounded-xl p-6 relative overflow-hidden group hover:border-brand-red transition-all">
+                <div class="absolute -right-4 -top-4 w-16 h-16 bg-brand-red/5 rounded-full blur-xl group-hover:bg-brand-red/10 transition-all"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-brand-red/15 text-brand-red font-mono text-xs px-2.5 py-1 rounded">2019 Grad</span>
+                    <i class="fa-solid fa-graduation-cap text-gray-500 text-xl group-hover:text-brand-red transition-all"></i>
+                </div>
+                <h4 class="text-lg font-bold text-white mb-1">B.Tech in CSE</h4>
+                <p class="text-gray-400 text-xs mb-3 font-mono">MAKAUT University</p>
+                <div class="bg-brand-black/60 p-3 rounded-lg border border-white/5">
+                    <span class="text-gray-500 text-xs font-mono block uppercase">Final Grade</span>
+                    <span class="text-white font-bold font-mono">DGPA: 7.31 / 10</span>
+                </div>
+            </div>
+
+            <!-- Degree 2 -->
+            <div class="bg-brand-darkGray border border-white/10 rounded-xl p-6 relative overflow-hidden group hover:border-brand-red transition-all">
+                <div class="absolute -right-4 -top-4 w-16 h-16 bg-brand-red/5 rounded-full blur-xl group-hover:bg-brand-red/10 transition-all"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-white/10 text-gray-300 font-mono text-xs px-2.5 py-1 rounded">2015 Grad</span>
+                    <i class="fa-solid fa-school text-gray-500 text-xl group-hover:text-brand-red transition-all"></i>
+                </div>
+                <h4 class="text-lg font-bold text-white mb-1">Higher Secondary</h4>
+                <p class="text-gray-400 text-xs mb-3 font-mono">WBCHSE Board</p>
+                <div class="bg-brand-black/60 p-3 rounded-lg border border-white/5">
+                    <span class="text-gray-500 text-xs font-mono block uppercase">Final Percentage</span>
+                    <span class="text-white font-bold font-mono">66.4 %</span>
+                </div>
+            </div>
+
+            <!-- Degree 3 -->
+            <div class="bg-brand-darkGray border border-white/10 rounded-xl p-6 relative overflow-hidden group hover:border-brand-red transition-all">
+                <div class="absolute -right-4 -top-4 w-16 h-16 bg-brand-red/5 rounded-full blur-xl group-hover:bg-brand-red/10 transition-all"></div>
+                <div class="flex justify-between items-start mb-4">
+                    <span class="bg-white/10 text-gray-300 font-mono text-xs px-2.5 py-1 rounded">2012 Grad</span>
+                    <i class="fa-solid fa-book-open text-gray-500 text-xl group-hover:text-brand-red transition-all"></i>
+                </div>
+                <h4 class="text-lg font-bold text-white mb-1">Secondary Education</h4>
+                <p class="text-gray-400 text-xs mb-3 font-mono">WBBSE Board</p>
+                <div class="bg-brand-black/60 p-3 rounded-lg border border-white/5">
+                    <span class="text-gray-500 text-xs font-mono block uppercase">Final Percentage</span>
+                    <span class="text-white font-bold font-mono">67.0 %</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Interactive ServiceNow "Now Assist" Virtual Agent Simulator Section -->
+    <section id="virtual-agent" class="py-24 px-6 bg-brand-darkGray/40 border-t border-white/5 relative overflow-hidden">
+        <div class="absolute inset-0 pointer-events-none opacity-5 z-0">
+            <div class="absolute top-1/2 left-1/4 w-96 h-96 bg-brand-red rounded-full filter blur-3xl"></div>
+        </div>
+
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 relative z-10">
+            
+            <!-- Bot Showcase Narrative -->
+            <div class="lg:col-span-5 space-y-6 flex flex-col justify-center">
+                <div>
+                    <span class="text-brand-red font-mono text-sm tracking-widest uppercase font-bold">Interactive Sandbox</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Test My Virtual Agent Setup</h2>
+                </div>
+                <p class="text-gray-300 leading-relaxed text-sm">
+                    In my role as an AI Integration specialist, I build custom chatbot topics and integrations. Recruiter, interact with this **live simulated Virtual Agent (Now Assist clone)** designed by me!
+                </p>
+                <div class="p-4 bg-brand-black/50 border border-white/5 rounded-xl space-y-2 text-xs font-mono text-gray-400">
+                    <p class="text-white font-semibold">Try clicking the quick-buttons to interact instantly:</p>
+                    <ul class="space-y-1 text-[11px] list-disc list-inside">
+                        <li>Inquire about my EY experience.</li>
+                        <li>Ask for my direct contact credentials.</li>
+                        <li>Request summary of my certification scope.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bot Widget Frame -->
+            <div class="lg:col-span-7">
+                <div class="bg-brand-darkGray border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[500px]">
+                    
+                    <!-- Bot Window Header -->
+                    <div class="bg-brand-black px-6 py-4 border-b border-white/10 flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="relative">
+                                <span class="w-3.5 h-3.5 rounded-full bg-brand-red border border-brand-black flex items-center justify-center animate-pulse absolute -right-0.5 -bottom-0.5"></span>
+                                <div class="w-10 h-10 rounded-lg bg-brand-red/10 border border-brand-red/30 flex items-center justify-center text-brand-red">
+                                    <i class="fa-solid fa-robot"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-bold text-sm tracking-wide">Arijeet Assist</h4>
+                                <p class="text-[10px] text-gray-500 font-mono">ServiceNow Virtual Agent Simulator</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="bg-brand-red/20 text-brand-red text-[10px] font-mono px-2 py-0.5 rounded">V4.2</span>
+                            <button onclick="resetChat()" class="text-gray-500 hover:text-white transition-colors" title="Reset Chat">
+                                <i class="fa-solid fa-rotate-right text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Bot Messages Area -->
+                    <div id="chatMessages" class="flex-1 p-6 overflow-y-auto space-y-4 text-sm font-sans flex flex-col">
+                        <!-- Initial Message -->
+                        <div class="flex items-start gap-3 max-w-[85%]">
+                            <div class="w-8 h-8 rounded-md bg-brand-red/10 flex items-center justify-center text-brand-red text-xs mt-0.5 flex-shrink-0">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <div class="bg-brand-black/60 border border-white/5 rounded-lg rounded-tl-none p-3 text-gray-300">
+                                <p class="font-semibold text-xs text-brand-red mb-1">Arijeet Assist:</p>
+                                <p>Hello! Welcome to Arijeet Karmakar's Virtual Assistant. I'm here to answer your recruitment queries. How can I help you today?</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Options Trigger Panel -->
+                    <div class="bg-brand-black/20 p-4 border-t border-white/15 flex flex-wrap gap-2">
+                        <button onclick="handleBotQuery('experience')" class="bg-brand-black hover:bg-black text-[11px] font-semibold text-gray-300 hover:text-brand-red px-3 py-1.5 rounded-md border border-white/15 transition-all">
+                            Tell me about his Experience
+                        </button>
+                        <button onclick="handleBotQuery('skills')" class="bg-brand-black hover:bg-black text-[11px] font-semibold text-gray-300 hover:text-brand-red px-3 py-1.5 rounded-md border border-white/15 transition-all">
+                            What are his core Certs?
+                        </button>
+                        <button onclick="handleBotQuery('contact')" class="bg-brand-black hover:bg-black text-[11px] font-semibold text-gray-300 hover:text-brand-red px-3 py-1.5 rounded-md border border-white/15 transition-all">
+                            How to contact him?
+                        </button>
+                    </div>
+
+                    <!-- Bot Input Panel -->
+                    <div class="bg-brand-black px-4 py-3 border-t border-white/10 flex items-center gap-3">
+                        <input id="chatInput" type="text" placeholder="Ask anything about Arijeet..." class="flex-1 bg-brand-darkGray border border-white/10 rounded-lg px-4 py-2 text-sm text-white focus:outline-none focus:border-brand-red transition-colors" onkeydown="if(event.key === 'Enter') sendUserMessage()">
+                        <button onclick="sendUserMessage()" class="bg-brand-red hover:bg-brand-redHover text-white w-9 h-9 rounded-lg flex items-center justify-center transition-colors">
+                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            
+            <!-- Contact Narrative left -->
+            <div class="lg:col-span-5 space-y-6">
+                <div>
+                    <span class="text-brand-red font-mono text-sm tracking-widest uppercase font-bold">Contact</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2">Let's Connect</h2>
+                </div>
+                <p class="text-gray-300 leading-relaxed">
+                    Have an open opportunity on your ServiceNow team, or looking to integrate Agentic AI pipelines into your enterprise workspaces? Drop a line directly.
+                </p>
+
+                <div class="space-y-4 pt-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-10 h-10 rounded-lg bg-brand-darkGray flex items-center justify-center text-brand-red border border-white/5">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-500 font-mono block">EMAIL</span>
+                            <a href="mailto:arijitk65@gmail.com" class="text-white hover:text-brand-red transition-colors font-mono">arijitk65@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <div class="w-10 h-10 rounded-lg bg-brand-darkGray flex items-center justify-center text-brand-red border border-white/5">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-500 font-mono block">PHONE</span>
+                            <a href="tel:+918017920596" class="text-white hover:text-brand-red transition-colors font-mono">+91-8017920596</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4">
+                        <div class="w-10 h-10 rounded-lg bg-brand-darkGray flex items-center justify-center text-brand-red border border-white/5">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-500 font-mono block">LOCATION</span>
+                            <span class="text-white">Mahadevpura, Bangalore, Karnataka</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form Right -->
+            <div class="lg:col-span-7 bg-brand-darkGray border border-white/10 rounded-2xl p-6 sm:p-10 shadow-xl">
+                <form id="contactForm" class="space-y-6" onsubmit="handleFormSubmit(event)">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-xs font-mono uppercase text-gray-400">Your Name</label>
+                            <input type="text" required class="w-full bg-brand-black border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red transition-colors" placeholder="Alex Recruiter">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-xs font-mono uppercase text-gray-400">Email Address</label>
+                            <input type="email" required class="w-full bg-brand-black border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red transition-colors" placeholder="alex@company.com">
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <label class="text-xs font-mono uppercase text-gray-400">Subject</label>
+                        <input type="text" required class="w-full bg-brand-black border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red transition-colors" placeholder="ServiceNow Developer Opening">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="text-xs font-mono uppercase text-gray-400">Message</label>
+                        <textarea required rows="4" class="w-full bg-brand-black border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red transition-colors" placeholder="Hi Arijeet, we are looking for a certified ServiceNow developer with your expertise..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-brand-red hover:bg-brand-redHover text-white py-3.5 rounded-lg font-semibold transition-colors text-glow flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Transmit Message</span>
+                    </button>
+                </form>
+                
+                <!-- Thank You Toast Simulation -->
+                <div id="formSuccess" class="hidden mt-4 p-4 bg-green-900/30 border border-green-500/30 rounded-lg text-green-400 text-sm flex items-center gap-2">
+                    <i class="fa-solid fa-check-double"></i>
+                    <span>Your request has been successfully processed! Arijeet will respond shortly.</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Declaration & Footer Section -->
+    <footer class="bg-brand-black border-t border-white/10 py-12 px-6">
+        <div class="max-w-7xl mx-auto space-y-8">
+            
+            <!-- Formal Declaration -->
+            <div class="p-6 bg-brand-darkGray/40 border border-white/5 rounded-xl max-w-3xl mx-auto text-center space-y-2">
+                <h5 class="text-xs font-mono uppercase text-gray-400 tracking-widest font-bold">Official Declaration</h5>
+                <p class="text-xs text-gray-500 italic leading-relaxed">
+                    "I hereby state that all the informational items declared on this digital space represent true assets to the absolute best of my verification limits."
+                </p>
+                <p class="text-xs font-mono text-brand-red font-bold uppercase tracking-wider mt-2">- Arijeet Karmakar</p>
+            </div>
+
+            <!-- Footer Links/Socials -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pt-6 border-t border-white/5">
+                <p class="text-xs text-gray-600 font-mono">
+                    © 2026 Arijeet Karmakar. Hosted via GitHub Pages.
+                </p>
+                
+                <!-- Social Icons / Resume Action Hooks -->
+                <div class="flex items-center space-x-4">
+                    <a href="mailto:arijitk65@gmail.com" class="w-8 h-8 rounded-full bg-brand-darkGray flex items-center justify-center text-gray-400 hover:text-brand-red border border-white/5 transition-all" aria-label="Email Address">
+                        <i class="fa-solid fa-envelope text-sm"></i>
+                    </a>
+                    <a href="tel:+918017920596" class="w-8 h-8 rounded-full bg-brand-darkGray flex items-center justify-center text-gray-400 hover:text-brand-red border border-white/5 transition-all" aria-label="Call Phone">
+                        <i class="fa-solid fa-phone text-sm"></i>
+                    </a>
+                    <a href="#about" class="w-8 h-8 rounded-full bg-brand-darkGray flex items-center justify-center text-gray-400 hover:text-brand-red border border-white/5 transition-all" aria-label="About Section">
+                        <i class="fa-solid fa-user text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logics -->
+    <script>
+        // Copy to clipboard fallback handler
+        function copyToClipboard(text, elementId) {
+            const btn = document.getElementById(elementId);
+            const originalHTML = btn.innerHTML;
+            
+            // Native iFrame safe copy logic
+            const tempInput = document.createElement('input');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            // Visual Success Indicator
+            btn.innerHTML = `<i class="fa-solid fa-check text-green-500"></i> <span class="text-green-500">Copied!</span>`;
+            showToast(`Copied "${text}" to clipboard successfully.`);
+            
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+            }, 3000);
+        }
+
+        // Custom Elegant Toast display logic
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            toastMsg.innerText = message;
+            
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3500);
+        }
+
+        // Mobile Menu Toggler
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        // Auto close mobile menu on item clicks
+        mobileMenu.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+
+        // Typewriter Sequence
+        const titles = [
+            "ServiceNow Developer.",
+            "AI Integration Specialist.",
+            "Now Assist Conversationalist.",
+            "Workflow Architect."
+        ];
+        let titleIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
+        const typewriterSpan = document.getElementById('typewriter');
+
+        function typeEffect() {
+            const currentTitle = titles[titleIdx];
+            if (isDeleting) {
+                typewriterSpan.innerText = currentTitle.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                typewriterSpan.innerText = currentTitle.substring(0, charIdx + 1);
+                charIdx++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIdx === currentTitle.length) {
+                typeSpeed = 2000; // Pause at full title
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                titleIdx = (titleIdx + 1) % titles.length;
+                typeSpeed = 500; // Pause before typing new title
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+
+        // ServiceNow Hub Tab Switching Logic
+        function switchSNDemo(tabName) {
+            // Hide all panels
+            const panels = document.querySelectorAll('.sn-panel');
+            panels.forEach(p => p.classList.add('hidden'));
+
+            // Reset Tab UI
+            const tabButtons = document.querySelectorAll('.sn-tab-btn');
+            tabButtons.forEach(btn => {
+                btn.classList.remove('text-brand-red', 'border-brand-red', 'bg-brand-black/60');
+                btn.classList.add('text-gray-400', 'border-transparent');
+            });
+
+            // Activate Target Tab & Panel
+            document.getElementById(`panel-${tabName}`).classList.remove('hidden');
+            const targetBtn = document.getElementById(`tab-${tabName}`);
+            targetBtn.classList.add('text-brand-red', 'border-brand-red', 'bg-brand-black/60');
+            targetBtn.classList.remove('text-gray-400', 'border-transparent');
+        }
+
+        // Simulated "Now Assist" Virtual Agent Chat Bot Database
+        const botResponses = {
+            experience: `**Arijeet's Enterprise Experience Profile:**<br><br>
+                         • **EY (Supervising Associate, Apr 2022 - Ongoing)**: Focuses heavily on Domain-Separated instances, CSM/ITSM workflow designs, SharePoint Integration, and **Now Assist** Gen-AI models.<br>
+                         • **Appsbee Technology (QA Tester, 2019 - 2022)**: Executed high-scale regression cycles, configured test suites, and tracked anomalies with Jira.<br>
+                         • **G.I. Labs (AI Intern, 2018 - 2019)**: Built Dialogflow voicebot prototypes and explored WebSpeech engines.`,
+            
+            skills: `**Key Technical & Architecture Index:**<br><br>
+                     • **ServiceNow Core & Certifications**: Certified System Administrator (CSA), **Certified Implementation Specialist - Data Foundations (CIS-DF)**, and **Micro-Certification - CMDB Health**. Specialized in CSM, ITSM, CMDB diagnostic modeling, Service Portal configurations, and custom workspace engines.<br>
+                     • **AI Capabilities**: ServiceNow Now Assist (Chat/Case Summarizations, KB generation), Google Dialogflow NLP agent mapping.<br>
+                     • **Integration Layer**: REST Web Services, Postman, Ebonding sync patterns, SharePoint Search Connectors.`,
+            
+            contact: `**Contact & Onboarding Routes:**<br><br>
+                      • **Direct Email**: <a href="mailto:arijitk65@gmail.com" class="text-brand-red font-mono underline">arijitk65@gmail.com</a><br>
+                      • **Direct Phone**: <span class="text-brand-red font-mono font-bold">+91-8017920596</span><br>
+                      • **Current Residence**: Mahadevpura, Bangalore, Karnataka.<br><br>
+                      Feel free to click "Export CV" in the top action header to download a detailed physical printout!`
+        };
+
+        const greetings = [
+            "Hello! I am ready to retrieve credentials. How can I assist you?",
+            "How can I help you learn about Arijeet's qualifications?",
+            "System connected. Please select one of my quick-pass variables or query me below!"
+        ];
+
+        function sendUserMessage() {
+            const input = document.getElementById('chatInput');
+            const text = input.value.trim();
+            if (!text) return;
+
+            // Render User bubble
+            appendMessage('user', text);
+            input.value = '';
+
+            // Loading state
+            showBotTypingIndicator();
+
+            // Match query keywords
+            setTimeout(() => {
+                removeTypingIndicator();
+                const cleanText = text.toLowerCase();
+                let reply = "I didn't quite catch that. Would you like me to supply info regarding his **experience**, his core **skills**, or his direct **contact**?";
+
+                if (cleanText.includes('experience') || cleanText.includes('ey') || cleanText.includes('work') || cleanText.includes('appsbee')) {
+                    reply = botResponses.experience;
+                } else if (cleanText.includes('skills') || cleanText.includes('cert') || cleanText.includes('csa') || cleanText.includes('servicenow')) {
+                    reply = botResponses.skills;
+                } else if (cleanText.includes('contact') || cleanText.includes('email') || cleanText.includes('phone') || cleanText.includes('call')) {
+                    reply = botResponses.contact;
+                }
+
+                appendMessage('bot', reply);
+            }, 800);
+        }
+
+        function handleBotQuery(topic) {
+            appendMessage('user', `Retrieve details regarding: ${topic}`);
+            showBotTypingIndicator();
+            
+            setTimeout(() => {
+                removeTypingIndicator();
+                appendMessage('bot', botResponses[topic] || "Variable not set.");
+            }, 600);
+        }
+
+        function appendMessage(sender, text) {
+            const container = document.getElementById('chatMessages');
+            const wrapper = document.createElement('div');
+            
+            if (sender === 'user') {
+                wrapper.className = "flex items-start gap-3 max-w-[85%] self-end flex-row-reverse";
+                wrapper.innerHTML = `
+                    <div class="w-8 h-8 rounded-md bg-brand-darkGray border border-white/10 flex items-center justify-center text-gray-400 text-xs mt-0.5 flex-shrink-0">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="bg-brand-red text-white rounded-lg rounded-tr-none p-3 shadow-lg">
+                        <p class="font-semibold text-xs text-white/80 mb-1">You:</p>
+                        <p class="leading-relaxed text-sm">${text}</p>
+                    </div>
+                `;
+            } else {
+                wrapper.className = "flex items-start gap-3 max-w-[85%]";
+                wrapper.innerHTML = `
+                    <div class="w-8 h-8 rounded-md bg-brand-red/10 flex items-center justify-center text-brand-red text-xs mt-0.5 flex-shrink-0">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="bg-brand-black/60 border border-white/5 rounded-lg rounded-tl-none p-3 text-gray-300">
+                        <p class="font-semibold text-xs text-brand-red mb-1">Arijeet Assist:</p>
+                        <div class="leading-relaxed text-sm">${text}</div>
+                    </div>
+                `;
+            }
+
+            container.appendChild(wrapper);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function showBotTypingIndicator() {
+            const container = document.getElementById('chatMessages');
+            const wrapper = document.createElement('div');
+            wrapper.id = "typingIndicator";
+            wrapper.className = "flex items-start gap-3 max-w-[85%]";
+            wrapper.innerHTML = `
+                <div class="w-8 h-8 rounded-md bg-brand-red/10 flex items-center justify-center text-brand-red text-xs mt-0.5 flex-shrink-0">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div class="bg-brand-black/60 border border-white/5 rounded-lg rounded-tl-none p-3 text-gray-500 font-mono text-xs flex items-center space-x-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-brand-red animate-ping"></span>
+                    <span>AI Engine Processing Query...</span>
+                </div>
+            `;
+            container.appendChild(wrapper);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function removeTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) indicator.remove();
+        }
+
+        function resetChat() {
+            const container = document.getElementById('chatMessages');
+            container.innerHTML = `
+                <div class="flex items-start gap-3 max-w-[85%]">
+                    <div class="w-8 h-8 rounded-md bg-brand-red/10 flex items-center justify-center text-brand-red text-xs mt-0.5 flex-shrink-0">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="bg-brand-black/60 border border-white/5 rounded-lg rounded-tl-none p-3 text-gray-300">
+                        <p class="font-semibold text-xs text-brand-red mb-1">Arijeet Assist:</p>
+                        <p>${greetings[Math.floor(Math.random() * greetings.length)]}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Contact Form Processing
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button[type="submit"]');
+            const successIndicator = document.getElementById('formSuccess');
+            const originalHTML = btn.innerHTML;
+
+            btn.disabled = true;
+            btn.innerHTML = `<i class="fa-solid fa-arrows-spin animate-spin"></i> <span>Transmitting...</span>`;
+
+            setTimeout(() => {
+                btn.innerHTML = `<i class="fa-solid fa-circle-check text-green-500"></i> <span class="text-green-500">Delivered</span>`;
+                successIndicator.classList.remove('hidden');
+                event.target.reset();
+                showToast("Form Message Delivered successfully!");
+                
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.innerHTML = originalHTML;
+                }, 3000);
+            }, 1200);
+        }
+
+        // Interactive Hero Canvas Logic
+        const canvas = document.getElementById('heroParticles');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 0.4 - 0.2;
+                this.speedY = Math.random() * 0.4 - 0.2;
+                this.alpha = Math.random() * 0.5 + 0.1;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(229, 9, 20, ${this.alpha})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const count = Math.min(60, Math.floor(canvas.width / 20));
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+
+        // Window Event hooks for Initialization
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initParticles();
+        });
+
+        window.onload = function() {
+            // Initiate Typewriter
+            typeEffect();
+            
+            // Initiate Interactive canvas backgrounds
+            resizeCanvas();
+            initParticles();
+            animateParticles();
+        };
+    </script>
+</body>
+</html>
